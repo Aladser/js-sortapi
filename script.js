@@ -1,5 +1,5 @@
 // данные
-games = [
+let games = [
     {name:"Tropico 6", time: 130},
     {name:"Skyrim", time: 155},
     {name:"Metro Exodus", time: 55},
@@ -7,14 +7,35 @@ games = [
     {name:"Need for Speed Playback", time: 70},
     {name:"Grim Dawn", time: 58},
 ];
+let sortedLists = new Map();
+sortedLists.set("Оригинальный список", games);
+sortedLists.set("Пузырьковая сортировка", SortingMethods.bubbleSort(games, (game1, game2) => game1.time>game2.time));
+sortedLists.set("Сортировка вставками", SortingMethods.insertSort(games, (game1, game2) => game1.time>game2.time));
+sortedLists.set("Сортировка выбором", SortingMethods.selectionSort(games, (game1, game2) => game1.time>game2.time));
+sortedLists.set("Сортировка слиянием", SortingMethods.mergeSort(games, (game1, game2) => game1.time<game2.time));
+sortedLists.set("Быстрая сортировка", SortingMethods.quickSort(games.slice(0)));
 
 // Печать списка
-function printList(arr, headText){
+function printList(output, arr){
+    arr.forEach(elem => {
+       let elemDiv = document.createElement('div');
+       elemDiv.className = "elem-sortlist content-sortlist";
+       let name =  document.createElement('p');
+       name.textContent = elem.name;
+       let time = document.createElement('p');
+       time.textContent = elem.time;
+       elemDiv.appendChild(name);
+       elemDiv.appendChild(time);
+       output.appendChild(elemDiv);
+    });
 }
 
-printList(games, "Изначальный массив");
-printList(SortingMethods.bubbleSort(games, (game1, game2) => game1.time>game2.time), "Пузырьковая сортировка");
-printList(SortingMethods.insertSort(games, (game1, game2) => game1.time>game2.time), "Сортировка вставками");
-printList(SortingMethods.selectionSort(games, (game1, game2) => game1.time>game2.time), "Сортировка выбором");
-printList(SortingMethods.mergeSort(games, (game1, game2) => game1.time<game2.time), "Сортировка слиянием");
-printList(SortingMethods.quickSort(games), "Быстрая сортировка");
+let divSortelists = document.querySelectorAll('.sortlist');
+printList(divSortelists[0], sortedLists.get("Оригинальный список"));
+printList(divSortelists[1], sortedLists.get("Пузырьковая сортировка"));
+printList(divSortelists[2], sortedLists.get("Сортировка вставками"));
+printList(divSortelists[3], sortedLists.get("Сортировка выбором"));
+printList(divSortelists[4], sortedLists.get("Сортировка слиянием"));
+printList(divSortelists[5], sortedLists.get("Быстрая сортировка"));
+
+

@@ -50,6 +50,7 @@ class SortingMethods{
     };
     // рекурсивный алгоритм слияния
     static mergeSort(arr, compareFunc){
+        arr = arr.slice(0);
         if (arr.length <= 1) {
             return arr;
         }
