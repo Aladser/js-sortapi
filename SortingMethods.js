@@ -38,6 +38,7 @@ class SortingMethods{
         return arr;
     }
     // -------слияние-------
+    // слияние малых частей
     static #merge(arrFirst, arrSecond, compareFunc){
         const arrSort = [];
         let i = 0;

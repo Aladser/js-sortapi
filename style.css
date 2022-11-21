@@ -1,0 +1,42 @@
+/* секция */
+#sortlist-section{
+    display: flex;
+}
+/* список */
+.sortlist{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+/* строка списка */
+.elem-sortlist {
+    border: 1px solid rgb(200, 200, 200);
+    color: rgb(60, 60, 60);
+    border-radius: 5px;
+    width: 99%;
+    text-align: center;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    margin-bottom: 5px;
+}
+/* заголовок строка */
+.header-sortlist{
+    background-color: rgb(240, 240, 240);
+}
+/* контент строка */
+.content-sortlist{
+    display: flex;
+}
+/* название контент строки*/
+.content-sortlist p:first-child{
+    width: 75%;
+    text-align: start;
+    padding-left: 10px;
+}
+/* время контент строки*/
+.content-sortlist p:last-child{
+    width: 25%;
+    font-weight: bolder;
+}
