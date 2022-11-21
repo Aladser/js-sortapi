@@ -11,21 +11,26 @@ games = [
 ];
 
 // Печать списка
-function printList(arr, headText){
-    let head = document.createElement("div");
-    head.style.fontWeight = 'bolder';
-    head.style.marginTop = '5px';
-    head.textContent = headText;
-    output.appendChild(head);
+function printList(arr, headText, headId){
+    // заголовок
+    let listHeader = document.createElement("p");
+    listHeader.style.fontWeight = 'bolder';
+    listHeader.style.marginTop = '5px';
+    listHeader.textContent = headText;   
+    output.appendChild(listHeader);
+    // список
+    let listTag = document.createElement("ol");
+    listTag.id = headId;
     arr.forEach((element, index) => {
-        let div = document.createElement("div");
-        div.textContent = `${index+1}. ${element.name}: ${element.time}ч`;
-        output.appendChild(div);
+        let li = document.createElement("li");
+        li.textContent = `${element.name}: ${element.time}ч`;
+        listTag.appendChild(li);
     });
+    output.appendChild(listTag);
 }
 
-printList(games, "Изначальный массив");
-printList(quickSort(games), "Сортированный массив");
+printList(games, "Изначальный массив", "start-list");
+printList(quickSort(games), "Быстрая сортировка");
 //addList(mergeSort(games, (game1, game2) => game1.time<game2.time));
 //addList(bubbleSort(games, (game1, game2) => game1.time>game2.time));
 //addList(insertSort(games, (game1, game2) => game1.time>game2.time));
