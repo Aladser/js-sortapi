@@ -1,21 +1,3 @@
-let output = document.querySelector('section');
-// Добавление заголовка
-function addHeader(text){
-    let head = document.createElement("div");
-    head.style.fontWeight = 'bolder';
-    head.style.marginTop = '5px';
-    head.textContent = text;
-    output.appendChild(head);
-}
-// добавление списка
-function addList(arr){
-    arr.forEach((element, index) => {
-        let div = document.createElement("div");
-        div.textContent = `${index+1}. ${element.name}: ${element.time}ч`;
-        output.appendChild(div);
-    });
-}
-
 // -------Сортировка пузырьком-------
 function bubbleSort(arr, compareFunc){
     arr = arr.slice(0);
@@ -96,7 +78,6 @@ function merge(arrFirst, arrSecond, compareFunc){
     }
     return i;
  }
- 
  // алгоритм быстрой сортировки
  function quickSort(arr, left, right) {
     if(arr.length == 1) return arr;  
@@ -112,21 +93,3 @@ function merge(arrFirst, arrSecond, compareFunc){
     }
     return arr;
  }
-// заготовка
-games = [
-    {name:"Tropico 6", time: 130},
-    {name:"Skyrim", time: 155},
-    {name:"Metro Exodus", time: 55},
-    {name:"Read Dead Redemption", time: 177},
-    {name:"Need for Speed Playback", time: 70},
-    {name:"Grim Dawn", time: 58},
-];
-
-addHeader("Оригинальный список");
-addList(games);
-addHeader("Сортированный список");
-addList(quickSort(games));
-//addList(mergeSort(games, (game1, game2) => game1.time<game2.time));
-//addList(bubbleSort(games, (game1, game2) => game1.time>game2.time));
-//addList(insertSort(games, (game1, game2) => game1.time>game2.time));
-//addList(selectionSort(games, (game1, game2) => game1.time>game2.time));
