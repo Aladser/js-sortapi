@@ -11,7 +11,7 @@ games = [
 ];
 
 // Печать списка
-function printList(arr, headText, headId){
+function printList(arr, headText){
     // заголовок
     let listHeader = document.createElement("p");
     listHeader.style.fontWeight = 'bolder';
@@ -20,7 +20,6 @@ function printList(arr, headText, headId){
     output.appendChild(listHeader);
     // список
     let listTag = document.createElement("ol");
-    listTag.id = headId;
     arr.forEach((element, index) => {
         let li = document.createElement("li");
         li.textContent = `${element.name}: ${element.time}ч`;
@@ -30,8 +29,8 @@ function printList(arr, headText, headId){
 }
 
 printList(games, "Изначальный массив", "start-list");
-printList(quickSort(games), "Быстрая сортировка");
-//addList(mergeSort(games, (game1, game2) => game1.time<game2.time));
-//addList(bubbleSort(games, (game1, game2) => game1.time>game2.time));
-//addList(insertSort(games, (game1, game2) => game1.time>game2.time));
-//addList(selectionSort(games, (game1, game2) => game1.time>game2.time));
+printList(SortingMethods.bubbleSort(games, (game1, game2) => game1.time>game2.time), "Пузырьковая сортировка");
+printList(SortingMethods.insertSort(games, (game1, game2) => game1.time>game2.time), "Сортировка вставками");
+printList(SortingMethods.selectionSort(games, (game1, game2) => game1.time>game2.time), "Сортировка выбором");
+printList(SortingMethods.mergeSort(games, (game1, game2) => game1.time<game2.time), "Сортировка слиянием");
+printList(SortingMethods.quickSort(games), "Быстрая сортировка");
