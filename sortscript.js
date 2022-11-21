@@ -15,6 +15,7 @@ function addList(arr){
         output.appendChild(div);
     });
 }
+
 // -------Сортировка пузырьком-------
 function bubbleSort(arr, compareFunc){
     arr = arr.slice(0);
@@ -26,6 +27,7 @@ function bubbleSort(arr, compareFunc){
     }
     return arr;
 }
+
 // -------Сортировка вставками-------
 function insertSort(arr, compareFunc){
     arr = arr.slice(0);
@@ -40,6 +42,7 @@ function insertSort(arr, compareFunc){
     }
     return arr;    
 }
+
 // -------Сортировка выбором-------
 function selectionSort(arr, compareFunc){
     arr = arr.slice(0);
@@ -53,6 +56,7 @@ function selectionSort(arr, compareFunc){
     }
     return arr;
 }
+
 // -------слияние-------
 function merge(arrFirst, arrSecond, compareFunc){
     const arrSort = [];
@@ -72,14 +76,8 @@ function merge(arrFirst, arrSecond, compareFunc){
     const arrRight = arr.slice(middle);
     return merge(mergeSort(arrLeft, compareFunc), mergeSort(arrRight, compareFunc), compareFunc);
  };
+
  // ------Быстрая сортировка -------
-// функция обмена элементов
-function swap(items, firstIndex, secondIndex){
-    const temp = items[firstIndex];
-    items[firstIndex] = items[secondIndex];
-    items[secondIndex] = temp;
- }
- 
  // функция разделитель
  function partition(items, left, right) {
     var pivot = items[Math.floor((right + left) / 2)], i = left, j = right;
@@ -91,7 +89,7 @@ function swap(items, firstIndex, secondIndex){
             j--;
         }
         if (i <= j) {
-            swap(items, i, j);
+            [items[i], items[j]] = [items[j], items[i]];
             i++;
             j--;
         }
