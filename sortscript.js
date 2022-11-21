@@ -15,7 +15,7 @@ function addList(arr){
         output.appendChild(div);
     });
 }
-// Сортировка пузырьком
+// -------Сортировка пузырьком-------
 function bubbleSort(arr, compareFunc){
     arr = arr.slice(0);
     for(let i=0; i<arr.length; i++){
@@ -26,7 +26,7 @@ function bubbleSort(arr, compareFunc){
     }
     return arr;
 }
-// Сортировка вставками
+// -------Сортировка вставками-------
 function insertSort(arr, compareFunc){
     arr = arr.slice(0);
     for(let i=1; i<arr.length; i++){
@@ -40,7 +40,7 @@ function insertSort(arr, compareFunc){
     }
     return arr;    
 }
-// Сортировка выбором
+// -------Сортировка выбором-------
 function selectionSort(arr, compareFunc){
     arr = arr.slice(0);
     for(let i=0; i<arr.length; i++){
@@ -54,33 +54,23 @@ function selectionSort(arr, compareFunc){
     return arr;
 }
 // -------слияние-------
-// алгоритм слияния более мелких частей
-function merge(arrFirst, arrSecond){
+function merge(arrFirst, arrSecond, compareFunc){
     const arrSort = [];
     let i = j = 0;
     while (i < arrFirst.length && j < arrSecond.length) {
-        arrSort.push(
-            (arrFirst[i].time < arrSecond[j].time) ?
-                arrFirst[i++] : arrSecond[j++]
-        );
+        arrSort.push( compareFunc(arrFirst[i], arrSecond[j]) ? arrFirst[i++] : arrSecond[j++] );
     }
-    return [ ...arrSort,...arrFirst.slice(i),...arrSecond.slice(j)];
+    return arrSort.concat(arrFirst.slice(i).length!=0 ? arrFirst.slice(i) : arrSecond.slice(j));
  };
- // сам рекурсивный алгоритм слияния
- function mergeSort(arr){
-    // проверяем корректность переданных данных
-    if (!arr || !arr.length) {
-        return null;
-    }
-    // если массив содержит один элемент, возвращаем его
+ // рекурсивный алгоритм слияния
+ function mergeSort(arr, compareFunc){
     if (arr.length <= 1) {
         return arr;
     }
-    // делим массив на две части
     const middle = Math.floor(arr.length / 2);
     const arrLeft = arr.slice(0, middle);
     const arrRight = arr.slice(middle);
-    return merge(mergeSort(arrLeft), mergeSort(arrRight));
+    return merge(mergeSort(arrLeft, compareFunc), mergeSort(arrRight, compareFunc), compareFunc);
  };
  // ------Быстрая сортировка -------
  function quickSort(arr){
@@ -99,7 +89,7 @@ games = [
 addHeader("Оригинальный список");
 addList(games);
 addHeader("Сортированный список");
-//addList(mergeSort(games));
+addList(mergeSort(games, (game1, game2) => game1.time<game2.time));
 //addList(bubbleSort(games, (game1, game2) => game1.time>game2.time));
 //addList(insertSort(games, (game1, game2) => game1.time>game2.time));
 //addList(selectionSort(games, (game1, game2) => game1.time>game2.time));
