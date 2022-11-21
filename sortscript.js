@@ -1,4 +1,4 @@
-let output = document.querySelector('main');
+let output = document.querySelector('section');
 // Добавление заголовка
 function addHeader(text){
     let head = document.createElement("div");
@@ -73,15 +73,53 @@ function merge(arrFirst, arrSecond, compareFunc){
     return merge(mergeSort(arrLeft, compareFunc), mergeSort(arrRight, compareFunc), compareFunc);
  };
  // ------Быстрая сортировка -------
- function quickSort(arr){
-    
+// функция обмена элементов
+function swap(items, firstIndex, secondIndex){
+    const temp = items[firstIndex];
+    items[firstIndex] = items[secondIndex];
+    items[secondIndex] = temp;
+ }
+ 
+ // функция разделитель
+ function partition(items, left, right) {
+    var pivot = items[Math.floor((right + left) / 2)], i = left, j = right;
+    while (i <= j) {
+        while (items[i].time < pivot.time) {
+            i++;
+        }
+        while (items[j].time > pivot.time) {
+            j--;
+        }
+        if (i <= j) {
+            swap(items, i, j);
+            i++;
+            j--;
+        }
+    }
+    return i;
+ }
+ 
+ // алгоритм быстрой сортировки
+ function quickSort(arr, left, right) {
+    if(arr.length == 1) return arr;  
+
+    left = left == undefined ? 0 : left;
+    right = right == undefined ? arr.length-1 : right;
+    let index = partition(arr, left, right);
+    if (left < index - 1) {
+        quickSort(arr, left, index - 1);
+    }
+    if (index < right) {
+        quickSort(arr, index, right);
+    }
+    return arr;
  }
 // заготовка
 games = [
     {name:"Tropico 6", time: 130},
     {name:"Skyrim", time: 155},
     {name:"Metro Exodus", time: 55},
-    {name:"Read Dead Redemption", time: 176},
+    {name:"Read Dead Redemption", time: 177},
     {name:"Need for Speed Playback", time: 70},
     {name:"Grim Dawn", time: 58},
 ];
@@ -89,7 +127,8 @@ games = [
 addHeader("Оригинальный список");
 addList(games);
 addHeader("Сортированный список");
-addList(mergeSort(games, (game1, game2) => game1.time<game2.time));
+addList(quickSort(games));
+//addList(mergeSort(games, (game1, game2) => game1.time<game2.time));
 //addList(bubbleSort(games, (game1, game2) => game1.time>game2.time));
 //addList(insertSort(games, (game1, game2) => game1.time>game2.time));
 //addList(selectionSort(games, (game1, game2) => game1.time>game2.time));
