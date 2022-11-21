@@ -1,4 +1,4 @@
-let output = document.querySelector('section');
+let output = document.querySelector('#list-section');
 
 // заготовка
 games = [
