@@ -10,7 +10,7 @@ let games = [
 let sortedLists = new Map();
 sortedLists.set("Оригинальный список", games);
 sortedLists.set("Пузырьковая сортировка", SortingMethods.bubbleSort(games, 'time', 'возрастание'));
-sortedLists.set("Сортировка вставками", SortingMethods.insertSort(games, (game1, game2) => game1.time>game2.time));
+sortedLists.set("Сортировка вставками", SortingMethods.insertSort(games, 'time', 'возрастание'));
 sortedLists.set("Сортировка выбором", SortingMethods.selectionSort(games, (game1, game2) => game1.time>game2.time));
 sortedLists.set("Сортировка слиянием", SortingMethods.mergeSort(games, (game1, game2) => game1.time<game2.time));
 sortedLists.set("Быстрая сортировка", SortingMethods.quickSort(games.slice(0)));
