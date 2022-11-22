@@ -13,7 +13,7 @@ sortedLists.set("Пузырьковая сортировка", SortingMethods.bu
 sortedLists.set("Сортировка вставками", SortingMethods.insertSort(games, 'time', 'возрастание'));
 sortedLists.set("Сортировка выбором", SortingMethods.selectionSort(games, 'time', 'возрастание'));
 sortedLists.set("Сортировка слиянием", SortingMethods.mergeSort(games, 'time', 'возрастание'));
-sortedLists.set("Быстрая сортировка", SortingMethods.quickSort(games.slice(0)));
+sortedLists.set("Быстрая сортировка", SortingMethods.quickSort(games.slice(0), 'time', 'возрастание'));
 
 // Печать списка
 function printList(output, arr){

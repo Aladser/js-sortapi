@@ -2,7 +2,7 @@
  * Сортировочные методы
  */
 class SortingMethods{
-    
+
     // -------Сортировка пузырьком-------
     static bubbleSort(arr, property, type){
         arr = arr.slice(0);
@@ -100,14 +100,24 @@ class SortingMethods{
 
     // ------Быстрая сортировка -------
     // функция разделитель
-    static #partition(items, left, right) {
+    static #partition(items, property, type, left, right) {
         var pivot = items[Math.floor((right + left) / 2)], i = left, j = right;
         while (i <= j) {
-            while (items[i].time < pivot.time) {
-                i++;
+            if(type === 'возрастание'){
+                while (items[i][property] < pivot[property]) {
+                    i++;
+                }
+                while (items[j][property] > pivot[property]) {
+                    j--;
+                }
             }
-            while (items[j].time > pivot.time) {
-                j--;
+            else{
+                while (items[i][property] > pivot[property]) {
+                    i++;
+                }
+                while (items[j][property] < pivot[property]) {
+                    j--;
+                }                
             }
             if (i <= j) {
                 [items[i], items[j]] = [items[j], items[i]];
@@ -118,17 +128,17 @@ class SortingMethods{
         return i;
     }
     // алгоритм быстрой сортировки
-    static quickSort(arr, left, right) {
+    static quickSort(arr, property, type, left, right) {
         if(arr.length == 1) return arr;  
 
         left = left == undefined ? 0 : left;
         right = right == undefined ? arr.length-1 : right;
-        let index = this.#partition(arr, left, right);
+        let index = this.#partition(arr, property, type, left, right);
         if (left < index - 1) {
-            this.quickSort(arr, left, index - 1);
+            this.quickSort(arr,  property, type, left, index - 1);
         }
         if (index < right) {
-            this.quickSort(arr, index, right);
+            this.quickSort(arr,  property, type, index, right);
         }
         return arr;
     }
