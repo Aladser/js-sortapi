@@ -1,11 +1,20 @@
+/**
+ * Сортировочные методы
+ */
 class SortingMethods{
     // -------Сортировка пузырьком-------
-    static bubbleSort(arr, compareFunc){
+    static bubbleSort(arr, property, type){
         arr = arr.slice(0);
         for(let i=0; i<arr.length; i++){
             for(let j=1; j<arr.length-i; j++){
-                if(compareFunc(arr[j-1], arr[j])) 
-                    [arr[j-1], arr[j]] = [arr[j], arr[j-1]];            
+                if(type === 'возрастание'){
+                    if(arr[j-1][property]>arr[j][property]) 
+                        [arr[j-1], arr[j]] = [arr[j], arr[j-1]];
+                }
+                else{
+                    if(arr[j-1][property]<arr[j][property]) 
+                        [arr[j-1], arr[j]] = [arr[j], arr[j-1]];    
+                }            
             }
         }
         return arr;
