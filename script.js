@@ -9,11 +9,11 @@ let games = [
 ];
 let sortedLists = new Map();
 sortedLists.set("Оригинальный список", games);
-sortedLists.set("Пузырьковая сортировка", SortingMethods.bubbleSort(games, 'time', SortingMethods.DESCENDING));
-sortedLists.set("Сортировка вставками", SortingMethods.insertSort(games, 'time', SortingMethods.DESCENDING));
-sortedLists.set("Сортировка выбором", SortingMethods.selectionSort(games, 'time', SortingMethods.DESCENDING));
-sortedLists.set("Сортировка слиянием", SortingMethods.mergeSort(games, 'time', SortingMethods.DESCENDING));
-sortedLists.set("Быстрая сортировка", SortingMethods.quickSort(games.slice(0), 'time', SortingMethods.DESCENDING));
+sortedLists.set("Пузырьковая сортировка", ObjectSortingMethods.bubbleSort(games, 'time', ObjectSortingMethods.INCREASE));
+sortedLists.set("Сортировка вставками", ObjectSortingMethods.insertSort(games, 'time', ObjectSortingMethods.INCREASE));
+sortedLists.set("Сортировка выбором", ObjectSortingMethods.selectionSort(games, 'time', ObjectSortingMethods.INCREASE));
+sortedLists.set("Сортировка слиянием", ObjectSortingMethods.mergeSort(games, 'time', ObjectSortingMethods.INCREASE));
+sortedLists.set("Быстрая сортировка", ObjectSortingMethods.quickSort(games.slice(0), 'time', ObjectSortingMethods.INCREASE));
 
 // Печать списка
 function printList(output, arr){
