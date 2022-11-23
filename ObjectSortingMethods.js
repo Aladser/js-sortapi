@@ -4,12 +4,12 @@
  * DESCENDING - сортировка по убыванию
  */
 class ObjectSortingMethods{
-    static get INCREASE(){return 0;}; // возрастание
-    static get DESCENDING(){return 1;}; // убывание
+    static INCREASE = () => 0; // возрастание
+    static DESCENDING = () => 1; // убывание
     // -------Сортировка пузырьком-------
     static bubbleSort(arr, property, type){
-        if(arr.hasOwnProperty(property)) return null;
-        if(type!=ObjectSortingMethods.INCREASE && type!=ObjectSortingMethods.DESCENDING) return null;
+        if(arr==null || !arr[0].hasOwnProperty(property) || (type!=this.INCREASE && type!=this.DESCENDING))
+            return null;
         arr = arr.slice(0);
 
         for(let i=0; i<arr.length; i++){
@@ -29,8 +29,8 @@ class ObjectSortingMethods{
 
     // -------Сортировка вставками-------
     static insertSort(arr, property, type){
-        if(arr.hasOwnProperty(property)) return null;
-        if(type!=ObjectSortingMethods.INCREASE && type!=ObjectSortingMethods.DESCENDING) return null;
+        if(arr==null || !arr[0].hasOwnProperty(property) || (type!=this.INCREASE && type!=this.DESCENDING))
+            return null;
         arr = arr.slice(0);
 
         for(let i=1; i<arr.length; i++){
@@ -57,8 +57,8 @@ class ObjectSortingMethods{
 
     // -------Сортировка выбором-------
     static selectionSort(arr, property, type){
-        if(arr.hasOwnProperty(property)) return null;
-        if(type!=ObjectSortingMethods.INCREASE && type!=ObjectSortingMethods.DESCENDING) return null;
+        if(arr==null || !arr[0].hasOwnProperty(property) || (type!=this.INCREASE && type!=this.DESCENDING))
+            return null;
         arr = arr.slice(0);
 
         for(let i=0; i<arr.length; i++){
@@ -102,8 +102,8 @@ class ObjectSortingMethods{
     };
     // рекурсивный алгоритм слияния
     static mergeSort(arr, property, type){
-        if(arr.hasOwnProperty(property)) return null;
-        if(type!=ObjectSortingMethods.INCREASE && type!=ObjectSortingMethods.DESCENDING) return null;
+        if(arr==null || !arr[0].hasOwnProperty(property) || (type!=this.INCREASE && type!=this.DESCENDING))
+            return null;
         arr = arr.slice(0);
 
         if (arr.length <= 1) {
@@ -147,8 +147,8 @@ class ObjectSortingMethods{
     }
     // алгоритм быстрой сортировки
     static quickSort(arr, property, type, left, right) {
-        if(arr.hasOwnProperty(property)) return null;
-        if(type!=ObjectSortingMethods.INCREASE && type!=ObjectSortingMethods.DESCENDING) return null;
+        if(arr==null || !arr[0].hasOwnProperty(property) || (type!=this.INCREASE && type!=this.DESCENDING))
+            return null;
         if(arr.length == 1) return arr;  
 
         left = left == undefined ? 0 : left;
