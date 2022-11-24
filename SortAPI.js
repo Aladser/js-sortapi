@@ -3,7 +3,7 @@
  * INCREASE - сортировка по возрастанию                 
  * DESCENDING - сортировка по убыванию
  */
-class ObjectSortingMethods{
+class SortAPI{
     static INCREASE = () => 0; // возрастание
     static DESCENDING = () => 1; // убывание
     // -------Сортировка пузырьком-------
