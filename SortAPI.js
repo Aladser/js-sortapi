@@ -10,6 +10,7 @@ class SortAPI{
     static bubbleSort(arr, property, type){
         if(arr==null || !arr[0].hasOwnProperty(property) || (type!=this.INCREASE && type!=this.DESCENDING))
             return;
+        arr = arr.slice(0);
 
         for(let i=0; i<arr.length; i++){
             for(let j=1; j<arr.length-i; j++){
@@ -23,12 +24,15 @@ class SortAPI{
                 }         
             }
         }
+
+        return arr;
     }
 
     // -------Сортировка вставками-------
     static insertSort(arr, property, type){
         if(arr==null || !arr[0].hasOwnProperty(property) || (type!=this.INCREASE && type!=this.DESCENDING))
             return;
+        arr = arr.slice(0);
 
         for(let i=1; i<arr.length; i++){
             const current = arr[i];
@@ -49,12 +53,15 @@ class SortAPI{
 
             arr[j] = current; // вставка в свободную ячейку
         } 
+
+        return arr;
     }
 
     // -------Сортировка выбором-------
     static selectionSort(arr, property, type){
         if(arr==null || !arr[0].hasOwnProperty(property) || (type!=this.INCREASE && type!=this.DESCENDING))
             return;
+        arr = arr.slice(0);
 
         for(let i=0; i<arr.length; i++){
             // поиск минимума
@@ -72,6 +79,8 @@ class SortAPI{
 
             [arr[i], arr[minIndex]] = [arr[minIndex], arr[i]];
         }
+
+        return arr;
     }
 
     // -------слияние-------
@@ -139,8 +148,8 @@ class SortAPI{
         }
         return i;
     }
-    // алгоритм быстрой сортировки
-    static quickSort(arr, property, type, left, right) {
+    // внутренний алгоритм быстрой сортировки
+    static #_quickSort(arr, property, type, left, right) {
         if(arr==null || !arr[0].hasOwnProperty(property) || (type!=this.INCREASE && type!=this.DESCENDING))
             return null;
         if(arr.length == 1) return arr;  
@@ -149,12 +158,19 @@ class SortAPI{
         right = right == undefined ? arr.length-1 : right;
         let index = this.#partition(arr, property, type, left, right);
         if (left < index - 1) {
-            this.quickSort(arr,  property, type, left, index - 1);
+            this.#_quickSort(arr,  property, type, left, index - 1);
         }
         if (index < right) {
-            this.quickSort(arr,  property, type, index, right);
+            this.#_quickSort(arr,  property, type, index, right);
         }
         return arr;
     }
+    // алгоритм быстрой сортировки
+    static quickSort(arr, property, type, left, right){
+        let _arr = arr.slice(0);
+        _arr = this.#_quickSort(_arr, property, type, left, right);
+        return _arr;
+    }
+
 
 }
