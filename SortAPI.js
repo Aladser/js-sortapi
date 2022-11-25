@@ -9,8 +9,7 @@ class SortAPI{
     // -------Сортировка пузырьком-------
     static bubbleSort(arr, property, type){
         if(arr==null || !arr[0].hasOwnProperty(property) || (type!=this.INCREASE && type!=this.DESCENDING))
-            return null;
-        arr = arr.slice(0);
+            return;
 
         for(let i=0; i<arr.length; i++){
             for(let j=1; j<arr.length-i; j++){
@@ -24,14 +23,12 @@ class SortAPI{
                 }         
             }
         }
-        return arr;
     }
 
     // -------Сортировка вставками-------
     static insertSort(arr, property, type){
         if(arr==null || !arr[0].hasOwnProperty(property) || (type!=this.INCREASE && type!=this.DESCENDING))
-            return null;
-        arr = arr.slice(0);
+            return;
 
         for(let i=1; i<arr.length; i++){
             const current = arr[i];
@@ -51,15 +48,13 @@ class SortAPI{
             }
 
             arr[j] = current; // вставка в свободную ячейку
-        }
-        return arr;    
+        } 
     }
 
     // -------Сортировка выбором-------
     static selectionSort(arr, property, type){
         if(arr==null || !arr[0].hasOwnProperty(property) || (type!=this.INCREASE && type!=this.DESCENDING))
-            return null;
-        arr = arr.slice(0);
+            return;
 
         for(let i=0; i<arr.length; i++){
             // поиск минимума
@@ -77,7 +72,6 @@ class SortAPI{
 
             [arr[i], arr[minIndex]] = [arr[minIndex], arr[i]];
         }
-        return arr;
     }
 
     // -------слияние-------
