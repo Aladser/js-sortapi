@@ -166,11 +166,7 @@ class SortAPI{
         return arr;
     }
     // алгоритм быстрой сортировки
-    static quickSort(arr, property, type, left, right){
-        let _arr = arr.slice(0);
-        _arr = this.#_quickSort(_arr, property, type, left, right);
-        return _arr;
-    }
+    static quickSort = (arr, property, type, left, right) => this.#_quickSort(arr.slice(0), property, type, left, right);
 
 
 }

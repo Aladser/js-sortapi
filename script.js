@@ -15,7 +15,7 @@ sortedLists.set("Сортировка выбором", SortAPI.selectionSort(gam
 sortedLists.set("Сортировка слиянием", SortAPI.mergeSort(games, 'time', SortAPI.INCREASE));
 sortedLists.set("Быстрая сортировка", SortAPI.quickSort(games, 'time', SortAPI.INCREASE));
 
-// Печать списка
+/** Печать списка */
 function printList(output, arr){
     arr.forEach(elem => {
        let elemDiv = document.createElement('div');
