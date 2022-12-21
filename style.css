@@ -11,7 +11,7 @@
     align-items: center;
 }
 /* строка списка */
-.elem-sortlist {
+.sortlist__elem{
     border: 1px solid rgb(200, 200, 200);
     color: rgb(60, 60, 60);
     border-radius: 5px;
@@ -22,21 +22,21 @@
     margin-bottom: 5px;
 }
 /* заголовок строка */
-.header-sortlist{
+.sortlist__header{
     background-color: rgb(240, 240, 240);
 }
 /* контент строка */
-.content-sortlist{
+.sortlist__content{
     display: flex;
 }
 /* название контент строки*/
-.content-sortlist p:first-child{
+.sortlist__content p:first-child{
     width: 75%;
     text-align: start;
     padding-left: 10px;
 }
 /* время контент строки*/
-.content-sortlist p:last-child{
+.sortlist__content p:last-child{
     width: 25%;
     font-weight: bolder;
 }

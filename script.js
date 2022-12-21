@@ -1,4 +1,3 @@
-// данные
 let games = [
     {name:"Tropico 6", time: 130},
     {name:"Skyrim", time: 155},
@@ -7,35 +6,36 @@ let games = [
     {name:"Need for Speed Playback", time: 70},
     {name:"Grim Dawn", time: 58},
 ];
-let sortedLists = new Map();
-sortedLists.set("Оригинальный список", games);
-sortedLists.set("Пузырьковая сортировка",SortAPI.bubbleSort(games, 'time', SortAPI.INCREASE));
-sortedLists.set("Сортировка вставками", SortAPI.insertSort(games, 'time', SortAPI.INCREASE));
-sortedLists.set("Сортировка выбором", SortAPI.selectionSort(games, 'time', SortAPI.INCREASE));
-sortedLists.set("Сортировка слиянием", SortAPI.mergeSort(games, 'time', SortAPI.INCREASE));
-sortedLists.set("Быстрая сортировка", SortAPI.quickSort(games, 'time', SortAPI.INCREASE));
 
-/** Печать списка */
+let sortType = SortAPI.INCREASE;
+const sortCollection = [
+    {name:'Оригинальный список', gamesList: games},
+    {name:'Пузырьковая сортировка', gamesList: SortAPI.bubbleSort(games, 'time', sortType)},
+    {name:'Сортировка вставками', gamesList: SortAPI.insertSort(games, 'time', sortType)},
+    {name:'Сортировка выбором', gamesList: SortAPI.selectionSort(games, 'time', sortType)},
+    {name:'Сортировка слиянием', gamesList: SortAPI.mergeSort(games, 'time', sortType)},
+    {name:'Быстрая сортировка', gamesList: SortAPI.quickSort(games, 'time', sortType)}
+];
+
 function printList(output, arr){
     arr.forEach(elem => {
        let elemDiv = document.createElement('div');
-       elemDiv.className = "elem-sortlist content-sortlist";
+       elemDiv.className = "sortlist__elem sortlist__content";
+
        let name =  document.createElement('p');
        name.textContent = elem.name;
        let time = document.createElement('p');
        time.textContent = elem.time;
+       
        elemDiv.appendChild(name);
        elemDiv.appendChild(time);
        output.appendChild(elemDiv);
     });
 }
 
-let divSortelists = document.querySelectorAll('.sortlist');
-printList(divSortelists[0], sortedLists.get("Оригинальный список"));
-printList(divSortelists[1], sortedLists.get("Пузырьковая сортировка"));
-printList(divSortelists[2], sortedLists.get("Сортировка вставками"));
-printList(divSortelists[3], sortedLists.get("Сортировка выбором"));
-printList(divSortelists[4], sortedLists.get("Сортировка слиянием"));
-printList(divSortelists[5], sortedLists.get("Быстрая сортировка"));
+let sortlists = document.querySelectorAll('.sortlist');
+for(let i=0; i<sortCollection.length; i++){
+    printList(sortlists[i], sortCollection[i].gamesList);
+}
 
 
