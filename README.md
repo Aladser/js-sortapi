@@ -1,1 +1,1 @@
-[JavaScript сортировки](https://aladser.github.io/JS_Corting/)
+[JavaScript сортировки](https://aladser.github.io/js-sortapi/)
